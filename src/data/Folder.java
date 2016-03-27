@@ -6,6 +6,12 @@ public class Folder {
 	private String name;
 	private List<Credential> credentials;
 
+	public Folder() {}
+	public Folder(String n, List<Credential> c) {
+		this.name = n;
+		this.credentials = c;
+	}
+
 	public String getName() {
 		return name;
 	}
