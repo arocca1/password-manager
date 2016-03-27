@@ -9,20 +9,25 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import data.CredentialStore;
 import data.Folder;
 
 public class CredentialReader {
 	private String credentialFileLocation;
+	private ObjectMapper mapper;
 
 	public CredentialReader(String username) {
 		credentialFileLocation = String.format("%1$s%2$scred-%3$s", System.getProperty("user.dir"), File.separator, username);
+		mapper = new ObjectMapper();
 	}
 
 	private String decryptLine(String line) {
 		return Encryptor.decrypt(line);
 	}
 
-	public List<Folder> readCredentials() {
+	public CredentialStore readCredentials() {
 		BufferedReader br = null;
 		List<Folder> folders = new ArrayList<Folder>();
 		try {
@@ -30,6 +35,7 @@ public class CredentialReader {
 			String currentLine;
 			while ((currentLine = br.readLine()) != null) {
 				String decryptedLine = decryptLine(currentLine);
+				folders.add(mapper.readValue(decryptedLine, Folder.class));
 			}
 		} catch(IOException e) {
 			// TODO : log this somewhere
@@ -42,20 +48,22 @@ public class CredentialReader {
 				}
 			}
 		}
-		return folders;
+		return new CredentialStore(folders);
 	}
 
 	private String encryptLine(String line) {
 		return Encryptor.encrypt(line);
 	}
 
-	public void saveCredentials(List<Folder> credentialFolders) {
+	public void saveCredentials(CredentialStore credStore) {
 		BufferedWriter bw = null;
 		try {
 			bw = new BufferedWriter(new FileWriter(credentialFileLocation));
-			for (Folder f : credentialFolders) {
-				//TODO implement writing of file based on file format
+			for (Folder f : credStore.getFolders()) {
+				String encryptedFolder = encryptLine(mapper.writeValueAsString(f));
+				bw.write(encryptedFolder);
 			}
+			bw.flush();
 		} catch (IOException e) {
 			// TODO : log this somewhere
 		} finally {
