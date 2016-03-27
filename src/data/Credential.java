@@ -3,14 +3,27 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
 public class Credential {
 	private String username;
+	@JsonUnwrapped
 	private Password password;
 	private String website;
 	private Folder folder;
 	private String notes;
 	private List<SecurityQuestion> securityQuestions;
-	
+
+	// ONLY FOR JSON SERIALIZATION/DESERIALIZATION
+	public Credential() { }
+
+	public Credential(String u, String p, String site) {
+		this.username = u;
+		this.password = new Password(p);
+		this.website = site;
+		this.securityQuestions = new ArrayList<SecurityQuestion>();
+	}
+
 	public Credential(String u, String p, String site, Folder f, String n, List<SecurityQuestion> questions) {
 		this.username = u;
 		this.password = new Password(p);
@@ -47,12 +60,12 @@ public class Credential {
 		this.notes = notes;
 	}
 
-	public String getHiddenPassword() {
-		return password.getHiddenPassword();
+	public String retrieveHiddenPassword() {
+		return password.retrieveHiddenPassword();
 	}
 	
-	public String getRealPassword() {
-		return password.getRealPassword();
+	public String retrieveRealPassword() {
+		return password.retrieveRealPassword();
 	}
 	
 	public void setPassword(String password) {

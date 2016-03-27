@@ -2,6 +2,9 @@ package data;
 
 import java.util.Random;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class Password {
 	private String password;
 	
@@ -9,7 +12,7 @@ public class Password {
 		password = p;
 	}
 
-	public String getHiddenPassword() {
+	public String retrieveHiddenPassword() {
 		// return randomized hidden password
 		// do not give any hint as to the length of the password
 		// TODO : clean up this string generation for password
@@ -21,7 +24,7 @@ public class Password {
 		return new String(text);
 	}
 
-	public String getRealPassword() {
+	public String retrieveRealPassword() {
 		return password;
 	}
 }
