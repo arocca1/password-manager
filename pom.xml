@@ -3,29 +3,6 @@
   <groupId>password-manager</groupId>
   <artifactId>password-manager</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Password Manager</name>
-  <description>Local password and credential manager</description>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>src</directory>
-        <excludes>
-          <exclude>**/*.java</exclude>
-        </excludes>
-      </resource>
-    </resources>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.3</version>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
   <dependencies>
   	<dependency>
   		<groupId>com.fasterxml.jackson.core</groupId>
@@ -37,10 +14,11 @@
   		<artifactId>commons-codec</artifactId>
   		<version>20041127.091804</version>
     </dependency>
-  	<dependency> 
-    	<groupId>org.slf4j</groupId>
-    	<artifactId>slf4j-log4j12</artifactId>
-  		<version>1.7.22</version>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.22</version>
     </dependency>
   </dependencies>
 </project>
+
