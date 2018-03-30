@@ -1,4 +1,4 @@
-package ui;
+package main.ui;
 
 import java.awt.Container;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import data.Folder;
+import main.data.Folder;
 
 // This manages the actual password management view
 // There will be additional views here

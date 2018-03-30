@@ -1,7 +1,9 @@
+package main;
+
 import javax.swing.SwingUtilities;
 
-import ui.LoginManager;
-import ui.PasswordManager;
+import main.ui.LoginManager;
+import main.ui.PasswordManager;
 
 public class Main {
 	private static void showPasswordManager() {
@@ -17,7 +19,7 @@ public class Main {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				// showLoginScreen();
+				showLoginScreen();
 				showPasswordManager();
 			}
 		});

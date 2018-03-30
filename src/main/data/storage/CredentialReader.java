@@ -1,4 +1,4 @@
-package data.storage;
+package main.data.storage;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,8 +11,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import data.CredentialStore;
-import data.Folder;
+import main.data.CredentialStore;
+import main.data.Folder;
 
 public class CredentialReader {
 	private String credentialFileLocation;

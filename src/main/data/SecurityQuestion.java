@@ -1,4 +1,4 @@
-package data;
+package main.data;
 
 public class SecurityQuestion {
 	private String question;
