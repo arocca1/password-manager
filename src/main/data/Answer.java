@@ -9,7 +9,7 @@ public class Answer {
 		this.answer = a;
 	}
 
-	public String getHiddenAnswer() {
+	public static String getHiddenAnswer() {
 		// return randomized hidden answer
 		// do not give any hint as to the length of the answer
 		// TODO : clean up this string generation for answer

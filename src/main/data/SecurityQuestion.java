@@ -13,7 +13,7 @@ public class SecurityQuestion {
 	}
 
 	public String getHiddenAnswer() {
-		return answer.getHiddenAnswer();
+		return Answer.getHiddenAnswer();
 	}
 	
 	public String getRealAnswer() {

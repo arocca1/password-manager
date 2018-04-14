@@ -12,7 +12,7 @@ public class Password {
 		password = p;
 	}
 
-	public String retrieveHiddenPassword() {
+	public static String getHiddenPassword() {
 		// return randomized hidden password
 		// do not give any hint as to the length of the password
 		// TODO : clean up this string generation for password
