@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
-public class Credential {
+public class Login {
 	private String username;
 	@JsonUnwrapped
 	private Password password;
@@ -15,16 +15,16 @@ public class Credential {
 	private List<SecurityQuestion> securityQuestions;
 
 	// ONLY FOR JSON SERIALIZATION/DESERIALIZATION
-	public Credential() { }
+	public Login() { }
 
-	public Credential(String u, String p, String site) {
+	public Login(String u, String p, String site) {
 		this.username = u;
 		this.password = new Password(p);
 		this.website = site;
 		this.securityQuestions = new ArrayList<SecurityQuestion>();
 	}
 
-	public Credential(String u, String p, String site, Folder f, String n, List<SecurityQuestion> questions) {
+	public Login(String u, String p, String site, Folder f, String n, List<SecurityQuestion> questions) {
 		this.username = u;
 		this.password = new Password(p);
 		this.website = site;
@@ -61,7 +61,7 @@ public class Credential {
 	}
 
 	public String retrieveHiddenPassword() {
-		return password.retrieveHiddenPassword();
+		return Password.getHiddenPassword();
 	}
 	
 	public String retrieveRealPassword() {

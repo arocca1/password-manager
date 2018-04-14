@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Folder {
 	private String name;
-	private List<Credential> credentials;
+	private List<Login> credentials;
 
 	public Folder() {
-		this.credentials = new ArrayList<Credential>();
+		this.credentials = new ArrayList<Login>();
 	}
-	public Folder(String n, List<Credential> c) {
+	public Folder(String n, List<Login> c) {
 		this.name = n;
 		this.credentials = c;
 	}
@@ -21,11 +21,11 @@ public class Folder {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Credential> getCredentials() {
+	public List<Login> getCredentials() {
 		return credentials;
 	}
 
-	public void addCredential(Credential c) {
+	public void addCredential(Login c) {
 		credentials.add(c);
 	}
 }
