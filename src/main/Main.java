@@ -8,7 +8,7 @@ import main.ui.PasswordManager;
 public class Main {
 	private static void showPasswordManager() {
 		PasswordManager pwManager = new PasswordManager();
-		pwManager.showFoldersView();
+		//pwManager.showFoldersView();
 	}
 
 	private static void showLoginScreen() {

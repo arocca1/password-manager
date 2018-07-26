@@ -37,7 +37,7 @@ public class CredentialReader {
 				String decryptedLine = decryptLine(currentLine);
 				folders.add(mapper.readValue(decryptedLine, Folder.class));
 			}
-		} catch(IOException e) {
+		} catch (IOException e) {
 			// TODO : log this somewhere
 		} finally {
 			if (br != null) {

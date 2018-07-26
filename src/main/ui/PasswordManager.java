@@ -16,6 +16,7 @@ import main.data.Folder;
 // This manages the actual password management view
 // There will be additional views here
 public class PasswordManager {
+	/*
 	private JFrame frame;
 	private Container contentPane;
 
@@ -64,5 +65,5 @@ public class PasswordManager {
 		JMenu aboutMenu = new JMenu("About");
 		menuBar.add(aboutMenu);
 		return menuBar;
-	}
+	}*/
 }
