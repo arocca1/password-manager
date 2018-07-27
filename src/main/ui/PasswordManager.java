@@ -11,21 +11,21 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import main.account.User;
+import main.data.CredentialStore;
 import main.data.Folder;
 
 // This manages the actual password management view
 // There will be additional views here
 public class PasswordManager {
-	/*
 	private JFrame frame;
-	private Container contentPane;
 
-	public void showFoldersView() {
+	public void showFoldersView(User user, CredentialStore store) {
 		// Create and set up the window.
         frame = new JFrame("PasswordManagerFoldersView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setJMenuBar(getMenuBar());
-        setContent(frame.getContentPane(), folders);
+        //frame.setJMenuBar(getMenuBar());
+        setContent(frame.getContentPane(), store.getFolders());
         // Display the window.
         frame.pack();
         frame.setVisible(true);
@@ -34,7 +34,7 @@ public class PasswordManager {
 	private void setContent(Container contentPane, List<Folder> folders) {
 		
 	}
-
+/*
 	private JMenuBar getMenuBar() {
 		JMenuBar menuBar = new JMenuBar();
 		JTextField searchField = new JTextField("   Search...   ");
@@ -65,5 +65,6 @@ public class PasswordManager {
 		JMenu aboutMenu = new JMenu("About");
 		menuBar.add(aboutMenu);
 		return menuBar;
-	}*/
+	}
+*/
 }

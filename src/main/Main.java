@@ -1,26 +1,28 @@
 package main;
 
+import java.util.List;
+
 import javax.swing.SwingUtilities;
 
+import main.account.User;
+import main.data.storage.AccountReader;
 import main.ui.LoginManager;
-import main.ui.PasswordManager;
 
 public class Main {
-	private static void showPasswordManager() {
-		PasswordManager pwManager = new PasswordManager();
-		//pwManager.showFoldersView();
+	private static List<User> readInUsers() {
+		AccountReader reader = new AccountReader();
+		return reader.readUserAccounts();
 	}
-
-	private static void showLoginScreen() {
-		LoginManager loginManager = new LoginManager();
+	private static void showLoginScreen(List<User> users) {
+		LoginManager loginManager = new LoginManager(users);
 		loginManager.showLoginScreen();
 	}
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				showLoginScreen();
-				showPasswordManager();
+				List<User> users = readInUsers();
+				showLoginScreen(users);
 			}
 		});
 	}

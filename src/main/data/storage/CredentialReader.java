@@ -19,7 +19,7 @@ public class CredentialReader {
 	private ObjectMapper mapper;
 
 	public CredentialReader(String username) {
-		credentialFileLocation = String.format("%1$s%2$scred-%3$s", System.getProperty("user.dir"), File.separator, username);
+		credentialFileLocation = String.format("%1$s%2$scred-%3$s", System.getProperty("user.dir"), File.separator, Encryptor.encrypt(username));
 		mapper = new ObjectMapper();
 	}
 
@@ -58,6 +58,7 @@ public class CredentialReader {
 	public void saveCredentials(CredentialStore credStore) {
 		BufferedWriter bw = null;
 		try {
+			// TODO handle file creation
 			bw = new BufferedWriter(new FileWriter(credentialFileLocation));
 			for (Folder f : credStore.getFolders()) {
 				String encryptedFolder = encryptLine(mapper.writeValueAsString(f));
