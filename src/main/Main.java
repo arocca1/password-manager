@@ -11,7 +11,7 @@ import main.ui.LoginManager;
 public class Main {
 	private static List<User> readInUsers() {
 		AccountReader reader = new AccountReader();
-		return reader.readUserAccounts();
+		return reader.readObjectsFromFile();
 	}
 	private static void showLoginScreen(List<User> users) {
 		LoginManager loginManager = new LoginManager(users);
