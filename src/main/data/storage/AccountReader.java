@@ -1,7 +1,9 @@
 package main.data.storage;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,5 +48,32 @@ public class AccountReader {
 			}
 		}
 		return users;
+	}
+
+	private String encryptLine(String line) {
+		return Encryptor.encrypt(line);
+	}
+
+	public void saveUserAccounts(List<User> users) {
+		BufferedWriter bw = null;
+		try {
+			// TODO handle file creation
+			bw = new BufferedWriter(new FileWriter(userAccountFileLocation));
+			for (User u : users) {
+				String encryptedUser = encryptLine(mapper.writeValueAsString(u));
+				bw.write(encryptedUser);
+			}
+			bw.flush();
+		} catch (IOException e) {
+			// TODO : log this somewhere
+		} finally {
+			if (bw != null) {
+				try {
+					bw.close();
+				} catch (IOException ex) {
+					// TODO : log this somewhere
+				}
+			}
+		}
 	}
 }

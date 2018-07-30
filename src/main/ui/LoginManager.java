@@ -25,6 +25,7 @@ import main.data.storage.CredentialReader;
 
 // This class manages the initial login UI
 public class LoginManager {
+	private List<User> users;
 	private Map<String, User> usernameToPassword;
 
 	public LoginManager(List<User> users) {
@@ -32,6 +33,7 @@ public class LoginManager {
 		for (User u : users) {
 			usernameToPassword.put(u.getUsername(), u);
 		}
+		this.users = users;
 	}
 
 	public void showLoginScreen() {
@@ -53,7 +55,8 @@ public class LoginManager {
         JButton signupButton = new JButton("Sign up");
         signupButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                // TODO bring them to a sign up screen
+                SignUpManager sm = new SignUpManager(users);
+                sm.showSignupScreen();
             }
         });
         btnPnl.add(signupButton);
