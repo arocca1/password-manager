@@ -38,7 +38,7 @@ public class LoginManager {
 
 	public void showLoginScreen() {
 		// Create and set up the window.
-        JFrame frame = new JFrame("LoginManagerLoginView");
+        final JFrame frame = new JFrame("LoginManagerLoginView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel topPnl = new JPanel(new GridLayout(0, 2));
@@ -57,6 +57,7 @@ public class LoginManager {
             public void actionPerformed(ActionEvent ae) {
                 SignUpManager sm = new SignUpManager(users);
                 sm.showSignupScreen();
+                frame.dispose();
             }
         });
         btnPnl.add(signupButton);
@@ -73,6 +74,7 @@ public class LoginManager {
                         CredentialReader cr = new CredentialReader(enteredUsername);
                         PasswordManager pm = new PasswordManager();
                         pm.showFoldersView(user, cr.readCredentials());
+                        frame.dispose();
                     }
                 } else {
                     // TODO show an error message

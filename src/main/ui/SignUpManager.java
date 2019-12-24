@@ -33,7 +33,7 @@ public class SignUpManager {
 
 	public void showSignupScreen() {
         // Create and set up the window.
-        JFrame frame = new JFrame("LoginManagerLoginView");
+        final JFrame frame = new JFrame("LoginManagerLoginView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel topPnl = new JPanel(new GridLayout(0, 2));
@@ -64,6 +64,7 @@ public class SignUpManager {
             public void actionPerformed(ActionEvent ae) {
                 LoginManager lm = new LoginManager(users);
                 lm.showLoginScreen();
+                frame.dispose();
             }
         });
         btnPnl.add(cancelButton);
@@ -85,6 +86,7 @@ public class SignUpManager {
                 // go to password manager view
                 PasswordManager pm = new PasswordManager();
                 pm.showFoldersView(u, store);
+                frame.dispose();
             }
         });
         btnPnl.add(signUpButton);
