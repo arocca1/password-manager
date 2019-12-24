@@ -2,6 +2,7 @@ package main.data.storage;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -27,8 +28,12 @@ public abstract class SafeFileReader<T> {
 	public List<T> readObjectsFromFile() {
 		BufferedReader br = null;
 		List<T> objs = new ArrayList<T>();
+		File f = new File(fileLocation);
+		if (!f.exists()) {
+			return objs;
+		}
 		try {
-			br = new BufferedReader(new FileReader(fileLocation));
+			br = new BufferedReader(new FileReader(f));
 			String currentLine;
 			while ((currentLine = br.readLine()) != null) {
 				String decryptedLine = decryptLine(currentLine);
@@ -54,15 +59,19 @@ public abstract class SafeFileReader<T> {
 
 	public void saveObjectsToFile(List<T> objs) {
 		BufferedWriter bw = null;
+		File f = new File(fileLocation);
 		try {
-			// TODO handle file creation
-			bw = new BufferedWriter(new FileWriter(fileLocation));
+			if (!f.exists()) {
+				f.createNewFile();
+			}
+			bw = new BufferedWriter(new FileWriter(f));
 			for (T obj : objs) {
 				String encryptedObj = encryptLine(mapper.writeValueAsString(obj));
 				bw.write(encryptedObj);
 			}
 			bw.flush();
 		} catch (IOException e) {
+			System.out.println("Exception time");
 			// TODO : log this somewhere
 		} finally {
 			if (bw != null) {

@@ -7,6 +7,10 @@ public class User {
 	private String username;
 	private String hashedPassword;
 
+	// ONLY FOR SERIALIZABILITY
+	public User() {
+	}
+
 	public User(String f, String l, String e, String u, String p) {
 		firstName = f;
 		lastName = f;
