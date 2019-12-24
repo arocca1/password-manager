@@ -36,6 +36,7 @@ public class SignUpManager {
         final JFrame frame = new JFrame("LoginManagerLoginView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // create the labels and input fields for signup
         JPanel topPnl = new JPanel(new GridLayout(0, 2));
         JLabel firstNameLabel = new JLabel("First name");
         topPnl.add(firstNameLabel);

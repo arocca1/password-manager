@@ -41,7 +41,10 @@ public class LoginManager {
         final JFrame frame = new JFrame("LoginManagerLoginView");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // set up the panel for errors and all of the inputs
         JPanel topPnl = new JPanel(new GridLayout(0, 2));
+
+        // build up the bad login error message
         final JLabel badLoginLabel = new JLabel("Your username and/or password do not match");
         badLoginLabel.setBackground(Color.RED);
         badLoginLabel.setOpaque(true);
@@ -52,6 +55,8 @@ public class LoginManager {
         emptyLabel.setOpaque(true);
         emptyLabel.setVisible(false);
         topPnl.add(emptyLabel);
+
+        // add in the labels and inputs for logging in, i.e. username and password
         JLabel usernameLabel = new JLabel("Username");
         topPnl.add(usernameLabel);
         final JTextField usernameField = new JTextField();
@@ -61,6 +66,7 @@ public class LoginManager {
         final JPasswordField passwordField = new JPasswordField(10);
         topPnl.add(passwordField);
 
+        // add signup and sign in buttons and corresponding events
         JPanel btnPnl = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton signupButton = new JButton("Sign up");
         signupButton.addActionListener(new ActionListener() {
@@ -95,6 +101,7 @@ public class LoginManager {
         btnPnl.add(signinButton);
         btnPnl.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
+        // combine the panels to create the full window
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(topPnl, BorderLayout.NORTH);
         mainPanel.add(btnPnl, BorderLayout.SOUTH);
