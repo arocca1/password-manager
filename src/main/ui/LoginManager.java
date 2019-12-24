@@ -42,6 +42,16 @@ public class LoginManager {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel topPnl = new JPanel(new GridLayout(0, 2));
+        final JLabel badLoginLabel = new JLabel("Your username and/or password do not match");
+        badLoginLabel.setBackground(Color.RED);
+        badLoginLabel.setOpaque(true);
+        badLoginLabel.setVisible(false);
+        topPnl.add(badLoginLabel);
+        final JLabel emptyLabel = new JLabel("");
+        emptyLabel.setBackground(Color.RED);
+        emptyLabel.setOpaque(true);
+        emptyLabel.setVisible(false);
+        topPnl.add(emptyLabel);
         JLabel usernameLabel = new JLabel("Username");
         topPnl.add(usernameLabel);
         final JTextField usernameField = new JTextField();
@@ -77,7 +87,8 @@ public class LoginManager {
                         frame.dispose();
                     }
                 } else {
-                    // TODO show an error message
+                    badLoginLabel.setVisible(true);
+                    emptyLabel.setVisible(true);
                 }
             }
         });
