@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import main.account.User;
 import main.data.storage.AccountReader;
 import main.ui.LoginManager;
@@ -21,8 +24,11 @@ public class Main {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				Logger logger = LoggerFactory.getLogger(Main.class);
 				List<User> users = readInUsers();
+				logger.debug("Read users in");
 				showLoginScreen(users);
+				logger.debug("Login screen loaded");
 			}
 		});
 	}

@@ -71,7 +71,6 @@ public abstract class SafeFileReader<T> {
 			}
 			bw.flush();
 		} catch (IOException e) {
-			System.out.println("Exception time");
 			// TODO : log this somewhere
 		} finally {
 			if (bw != null) {
